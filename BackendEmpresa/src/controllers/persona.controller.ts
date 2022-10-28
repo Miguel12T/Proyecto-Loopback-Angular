@@ -1,3 +1,4 @@
+import { service } from '@loopback/core';
 import {
   Count,
   CountSchema,
@@ -19,11 +20,14 @@ import {
 } from '@loopback/rest';
 import {Persona} from '../models';
 import {PersonaRepository} from '../repositories';
+import { NotificacionService } from '../services';
 
 export class PersonaController {
   constructor(
     @repository(PersonaRepository)
     public personaRepository : PersonaRepository,
+    @service(NotificacionService)
+    public serivicioNotificacion:NotificacionService,
   ) {}
 
   @post('/personas')
@@ -44,7 +48,15 @@ export class PersonaController {
     })
     persona: Omit<Persona, 'id'>,
   ): Promise<Persona> {
-    return this.personaRepository.create(persona);
+
+    let p = await this.personaRepository.create(persona);
+
+    let to = persona.email
+    console.log(to);
+    
+    const correo = this.serivicioNotificacion.enviarEmail(to)
+    
+    return p;
   }
 
   @get('/personas/count')
@@ -110,21 +122,6 @@ export class PersonaController {
   ): Promise<Persona> {
     return this.personaRepository.findById(id, filter);
   }
-
-  enviarSMS(){
-    const accountSid = '';
-    const authToken = '';
-    const client = require('twilio')(accountSid, authToken);
-
-    client.messages
-      .create({
-        body: 'Hola....',
-        from: '+15017122661',
-        to: '+15558675310'
-      })
-      .then((message: any) => console.log(message.sid));
-  }
-
   @patch('/personas/{id}')
   @response(204, {
     description: 'Persona PATCH success',

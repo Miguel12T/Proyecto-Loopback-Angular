@@ -1,3 +1,4 @@
+import { service } from '@loopback/core';
 import {
   Count,
   CountSchema,
@@ -19,11 +20,14 @@ import {
 } from '@loopback/rest';
 import {Cliente} from '../models';
 import {ClienteRepository} from '../repositories';
+import { AutenticacionService } from '../services';
 
 export class ClienteController {
   constructor(
     @repository(ClienteRepository)
     public clienteRepository : ClienteRepository,
+    @service(AutenticacionService)
+    public servicioAutenticacion:AutenticacionService,
   ) {}
 
   @post('/clientes')
@@ -44,6 +48,11 @@ export class ClienteController {
     })
     cliente: Omit<Cliente, 'id'>,
   ): Promise<Cliente> {
+    const clave = this.servicioAutenticacion.generarClave();
+    console.log('La clave es' +clave);
+    const claveCifrada = this.servicioAutenticacion.cifrarClave(clave);
+    console.log('La clave cifrada es' +claveCifrada);
+    cliente.clave = claveCifrada;
     return this.clienteRepository.create(cliente);
   }
 

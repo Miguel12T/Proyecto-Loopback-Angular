@@ -34,6 +34,12 @@ export class Persona extends Entity {
   fecha_nacimiento: string;
 
   @property({
+    type: 'string',
+    required: true,
+  })
+  email: string;
+
+  @property({
     type: 'boolean',
     required: true,
   })

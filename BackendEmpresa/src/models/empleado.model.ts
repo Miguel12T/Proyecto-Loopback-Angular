@@ -15,6 +15,11 @@ export class Empleado extends Entity {
   })
   sueldo_bruto: number;
 
+  @property({
+    type: 'string',
+    required: true,
+  })
+  clave: string;
 
   constructor(data?: Partial<Empleado>) {
     super(data);

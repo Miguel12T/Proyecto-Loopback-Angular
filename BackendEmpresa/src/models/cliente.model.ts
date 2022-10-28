@@ -15,6 +15,11 @@ export class Cliente extends Entity {
   })
   telefono: string;
 
+  @property({
+    type: 'string',
+    required: false,
+  })
+  clave: string;
 
   constructor(data?: Partial<Cliente>) {
     super(data);
