@@ -4,3 +4,6 @@ export * from './empleado.repository';
 export * from './empresa.repository';
 export * from './gerente.repository';
 export * from './persona.repository';
+export * from './empresa-cliente.repository';
+export * from './servicios.repository';
+export * from './tipo-servicio.repository';
