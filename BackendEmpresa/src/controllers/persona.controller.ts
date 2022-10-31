@@ -51,10 +51,10 @@ export class PersonaController {
 
     let p = await this.personaRepository.create(persona);
 
-    let to = persona.email
+    /* let to = persona.email
     console.log(to);
-    
-    const correo = this.serivicioNotificacion.enviarEmail(to)
+     */
+    /* const correo = this.serivicioNotificacion.enviarEmail(to) */
     
     return p;
   }

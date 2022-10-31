@@ -1,3 +1,4 @@
+import { service } from '@loopback/core';
 import {
   Count,
   CountSchema,
@@ -18,12 +19,19 @@ import {
   response,
 } from '@loopback/rest';
 import {Gerente} from '../models';
-import {GerenteRepository} from '../repositories';
+import {GerenteRepository, PersonaRepository} from '../repositories';
+import { AutenticacionService, NotificacionService } from '../services';
 
 export class GerenteController {
   constructor(
     @repository(GerenteRepository)
     public gerenteRepository : GerenteRepository,
+    @service(NotificacionService)
+    public servicioNotificacion:NotificacionService,
+    @repository(PersonaRepository)
+    public personaRepository:PersonaRepository,
+    @service(AutenticacionService)
+    public servicioAutenticacion:AutenticacionService
   ) {}
 
   @post('/gerentes')
@@ -44,7 +52,20 @@ export class GerenteController {
     })
     gerente: Omit<Gerente, 'id'>,
   ): Promise<Gerente> {
-    return this.gerenteRepository.create(gerente);
+    const clave = this.servicioAutenticacion.generarClave();
+    const claveCifrada = this.servicioAutenticacion.cifrarClave(clave);
+    gerente.clave = claveCifrada;
+
+    let gere = await this.gerenteRepository.create(gerente);
+
+    const per = this.personaRepository.findById(gerente.personaId)
+    const email = (await per).email
+
+    const cuerpo = `Su clave de ingreso es: <strong>${clave}</strong>`
+
+    const correo = this.servicioNotificacion.enviarEmail(email, cuerpo)
+
+    return gere;
   }
 
   @get('/gerentes/count')

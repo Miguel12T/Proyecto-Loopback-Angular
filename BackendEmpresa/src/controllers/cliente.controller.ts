@@ -17,10 +17,12 @@ import {
   del,
   requestBody,
   response,
+  HttpErrors,
 } from '@loopback/rest';
-import {Cliente} from '../models';
-import {ClienteRepository} from '../repositories';
-import { AutenticacionService } from '../services';
+import { request } from 'http';
+import {Cliente, Credenciales} from '../models';
+import {ClienteRepository, PersonaRepository} from '../repositories';
+import { AutenticacionService, NotificacionService } from '../services';
 
 export class ClienteController {
   constructor(
@@ -28,7 +30,40 @@ export class ClienteController {
     public clienteRepository : ClienteRepository,
     @service(AutenticacionService)
     public servicioAutenticacion:AutenticacionService,
+    @repository(PersonaRepository)
+    public personaRepository : PersonaRepository,
+    @service(NotificacionService)
+    public servicioNotificacion:NotificacionService
   ) {}
+  
+  @post("/identificarPersona", {
+    responses:{
+      '200':{
+        description: "Identificacion de usuarios"
+      }
+     }
+    })
+    async identificarPersona(
+    @requestBody() credenciales:Credenciales
+  ){
+    let p = await this.servicioAutenticacion.identificarPersona(credenciales.clave, credenciales.usuario);
+    if(p){
+      let token = this.servicioAutenticacion.generarTokenJWT(p)
+      return{
+        datos:{
+          id : p.id,
+          nombre:p.nombre,
+          email:p.email,
+          identificacion:p.identificacion
+        },
+        tk: token
+      }
+    }else{
+      throw new HttpErrors[401]("Datos invalidos");
+    }
+  }
+  
+
 
   @post('/clientes')
   @response(200, {
@@ -49,11 +84,22 @@ export class ClienteController {
     cliente: Omit<Cliente, 'id'>,
   ): Promise<Cliente> {
     const clave = this.servicioAutenticacion.generarClave();
-    console.log('La clave es' +clave);
+    
     const claveCifrada = this.servicioAutenticacion.cifrarClave(clave);
-    console.log('La clave cifrada es' +claveCifrada);
+    
     cliente.clave = claveCifrada;
-    return this.clienteRepository.create(cliente);
+    let cli = await this.clienteRepository.create(cliente);
+
+    const per = this.personaRepository.findById(cliente.personaId)
+    
+    const email = (await per).email
+
+    const cuerpo = `Su clave de ingreso es: <strong>${clave}</strong>`
+
+    const correo = this.servicioNotificacion.enviarEmail(email, cuerpo)
+    
+    return cli;
+
   }
 
   @get('/clientes/count')

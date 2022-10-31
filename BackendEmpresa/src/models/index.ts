@@ -7,3 +7,4 @@ export * from './empresa.model';
 export * from './servicios.model';
 export * from './tipo-servicio.model';
 export * from './empresa-cliente.model';
+export * from './credenciales.model';
