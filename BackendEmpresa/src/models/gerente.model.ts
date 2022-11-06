@@ -17,6 +17,12 @@ export class Gerente extends Entity {
   })
   tipo_cargo: string;
 
+  @property({
+    type: 'string',
+    required: false,
+  })
+  clave: string;
+
   @belongsTo(() => Persona)
   personaId: string;
 
