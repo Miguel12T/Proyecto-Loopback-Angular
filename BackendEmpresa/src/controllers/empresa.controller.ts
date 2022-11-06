@@ -1,3 +1,4 @@
+import { authenticate } from '@loopback/authentication/dist/decorators';
 import {
   Count,
   CountSchema,
@@ -20,6 +21,7 @@ import {
 import {Empresa} from '../models';
 import {EmpresaRepository} from '../repositories';
 
+@authenticate("admin")
 export class EmpresaController {
   constructor(
     @repository(EmpresaRepository)
@@ -47,6 +49,7 @@ export class EmpresaController {
     return this.empresaRepository.create(empresa);
   }
 
+  @authenticate.skip()//Para saltarse la accion
   @get('/empresas/count')
   @response(200, {
     description: 'Empresa model count',
