@@ -1,1 +1,69 @@
-<p>crear-personas works!</p>
+<h4 class="center-aling">Crear Persona</h4>
+
+<div class="container">
+    <form [formGroup]="fgValidador" (ngSubmit)="guardarPersona()" method="post">
+
+        <div class="row col s10">
+            <div class="col s2">
+                <label class="col-form-label">Nombres</label>
+            </div>
+            <div class="col s3">
+                <input formControlName="nombre" type="text" class="form-control" required>
+            </div>
+    
+            <div class="col s2">
+                <label class="col-form-label">Apellidos</label>
+                </div>
+            <div class="col s3 col lg3">
+                <input formControlName="apellidos" type="text" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="row col s10">
+            <div class="col s2">
+                <label class="col-form-label">Identificacion</label>
+            </div>
+            <div class="col s3">
+                <input formControlName="identificacion" type="number" class="form-control" required>
+            </div>
+            <div class="col s2">
+                <label class="col-form-label">Fecha de nacimiento</label>
+            </div>
+            <div class="col s3 col lg3">
+                <input formControlName="fecha_nacimiento" type="date" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="row col s10">
+            <div class="col s2">
+                <label class="col-form-label">Email</label>
+            </div>
+            <div class="col s3">
+                <input formControlName="email" type="email" class="form-control" required>
+            </div>
+            <div class="col s2">
+                <label class="col-form-label">Estado</label>
+            </div>
+            <div class="col s3 col lg3">
+                <div class="switch">
+                    <label>
+                      Off
+                      <input formControlName="estado" type="checkbox">
+                      <span class="lever"></span>
+                      On
+                    </label>
+                  </div>
+            </div>
+        </div>
+
+        <div class="row col s15">
+            <div class="col s5 col lg5">
+                <button [disabled]="!fgValidador.valid" type="submit" class="btn btn-primary">Guardar
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </div>    
+    </form>
+</div> 
+
+

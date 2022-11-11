@@ -1,1 +1,56 @@
-<p>crear-empresa works!</p>
+<h4 class="center-aling">Crear Empresa</h4>
+
+<div class="container">
+    <form [formGroup]="fgValidador" (ngSubmit)="guardarEmpresa()" method="post">
+
+        <div class="row col s10">
+            <div class="col s2">
+                <label class="col-form-label">Nombre</label>
+            </div>
+            <div class="col s3">
+                <input formControlName="nombre" type="text" class="form-control" required>
+            </div>
+    
+            <div class="col s2">
+                <label class="col-form-label">Direccion</label>
+                </div>
+            <div class="col s3 col lg3">
+                <input formControlName="direccion" type="text" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="row col s10">
+            <div class="col s2">
+                <label class="col-form-label">Email</label>
+            </div>
+            <div class="col s3">
+                <input formControlName="email" type="email" class="form-control" required>
+            </div>
+            <div class="col s2">
+                <label class="col-form-label">Telefono</label>
+            </div>
+            <div class="col s3 col lg3">
+                <input formControlName="telefono" type="number" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="row col s10">
+            <div class="col s2">
+                <label class="col-form-label">Nit</label>
+            </div>
+            <div class="col s3">
+                <input formControlName="nit" type="text" class="form-control" required>
+            </div>
+            <div class="col s2">
+                <label class="col-form-label"></label>
+            </div>
+            <div class="col s5 col lg5">
+                <button [disabled]="!fgValidador.valid" type="submit" class="btn btn-primary">Guardar
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </div>    
+    </form>
+</div> 
+
+

@@ -1,1 +1,36 @@
-<p>crear-directivo works!</p>
+<h4 class="center-aling">Crear Directivo</h4>
+
+<div class="container">
+    <form [formGroup]="fgValidador" (ngSubmit)="guardarDirectivo()" method="post">
+
+        <div class="row col s12">
+            <div class="col s2">
+                <label class="col-form-label">Empleado</label>
+            </div>
+            <div class="col s4">
+                <select formControlName="empleadoId" class="browser-default">
+                    <option value="" disabled selected>Seleccione un empleado</option>
+                    <option *ngFor="let emp of listadoRegistrosEmpleado" [value]="emp.id">{{ emp.id }}</option>
+                </select>
+            </div>
+    
+            <div class="col s2">
+                <label class="col-form-label">Categoria</label>
+                </div>
+            <div class="col s4 col lg4">
+                <input formControlName="categoria" type="text" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="row col s12">
+            <div class="col s5">
+                <button [disabled]="!fgValidador.valid" type="submit" class="btn btn-primary">Guardar
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </div>
+   
+    </form>
+</div> 
+
+

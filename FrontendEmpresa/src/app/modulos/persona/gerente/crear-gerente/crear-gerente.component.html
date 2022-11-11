@@ -1,1 +1,52 @@
-<p>crear-gerente works!</p>
+<h4 class="center-aling">Crear Gerente</h4>
+
+<div class="container">
+    <form [formGroup]="fgValidador" (ngSubmit)="guardarGerente()" method="post">
+
+        <div class="row col s12">
+            <div class="col s2">
+                <label class="col-form-label">Nombres</label>
+            </div>
+            <div class="col s4">
+                <select formControlName="personaId" class="browser-default">
+                    <option value="" disabled selected>Seleccione una persona</option>
+                    <option *ngFor="let per of listadoRegistros" [value]="per.id">{{ per.nombre }} {{ per.apellidos }}</option>
+                </select>
+            </div>
+    
+            <div class="col s2">
+                <label class="col-form-label">Tipo de Cargo</label>
+                </div>
+            <div class="col s4 col lg4">
+                <select formControlName="tipo_cargo" class="browser-default">
+                    <option value="" disabled selected>Seleccione un Cargo</option>
+                    <option value="Finanzas">Finanzas</option>
+                    <option value="General">General</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row col s12">
+            <div class="col s2">
+                <label class="col-form-label">Empresa</label>
+            </div>
+            <div class="col s4">
+                <select formControlName="empresaId" class="browser-default">
+                    <option value="" disabled selected>Seleccione una empresa</option>
+                    <option *ngFor="let emp of listadoRegistrosEmpresa" [value]="emp.id">{{ emp.nombre }}</option>
+                </select>
+            </div>
+            <div class="col s4">
+                <label class="col-form-label"></label>
+            </div>
+            <div class="col s5 col lg5">
+                <button [disabled]="!fgValidador.valid" type="submit" class="btn btn-primary">Guardar
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </div>
+   
+    </form>
+</div> 
+
+

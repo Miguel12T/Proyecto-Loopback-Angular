@@ -1,1 +1,31 @@
-<p>buscar-gerente works!</p>
+<a routerLink="/persona/crear-gerente" class="btn btn-primary" id="crearGerente">Agregar Gerente</a>
+
+<div class="col s12 m9">
+    <div class="card horizontal">
+      <div class="card-stacked">
+        <div class="card-content">
+            <table class="table responsive centered">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Tipo de Cargo</th>
+                        <th>Empresa</th>
+                        <th>Acciones</th>
+                     </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ger of listadoRegistros">
+                        <td>{{ ger.personaId }}</td>
+                        <td>{{ ger.tipo_cargo }}</td>
+                        <td>{{ ger.empresaId }}</td>
+                        <td>
+                            <a routerLink="/persona/editar-gerente/{{ ger.id }}" class="btn btn-primary"><i class="material-icons prefix">edit</i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>            
+        </div>
+      </div>
+    </div>
+  </div>
+

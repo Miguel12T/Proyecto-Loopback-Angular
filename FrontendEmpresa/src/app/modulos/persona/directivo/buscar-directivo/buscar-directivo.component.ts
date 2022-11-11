@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModeloDirectivo } from 'src/app/modelos/directivo.modelo';
+import { DirectivoService } from 'src/app/servicios/directivo.service';
 
 @Component({
   selector: 'app-buscar-directivo',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BuscarDirectivoComponent implements OnInit {
 
-  constructor() { }
+  listadoRegistros: ModeloDirectivo[] = [];
+  
+
+  constructor(private servicioDirectivo: DirectivoService,
+    ) { }
 
   ngOnInit(): void {
+    this.obtenerListadoDirectivos();
+  }
+
+  obtenerListadoDirectivos(){
+    this.servicioDirectivo.obtenerRegistros().subscribe((datos: ModeloDirectivo[])=>{
+      this.listadoRegistros = datos;
+    })
   }
 
 }

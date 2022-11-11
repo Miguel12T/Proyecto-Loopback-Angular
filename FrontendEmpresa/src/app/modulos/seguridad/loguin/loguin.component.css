@@ -1,0 +1,22 @@
+html,
+body {
+    height: 100%;
+}
+html {
+    display: table;
+    margin: auto;
+}
+body {
+    display: table-cell;
+    vertical-align: middle;
+    background: #4ECDC4;
+}
+
+form {
+    width: 400px;
+    text-align: center;
+}
+
+#login-page {
+   width: 440px;
+}

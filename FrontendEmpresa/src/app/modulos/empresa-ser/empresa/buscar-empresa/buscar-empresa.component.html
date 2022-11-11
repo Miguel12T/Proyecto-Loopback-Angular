@@ -1,1 +1,37 @@
-<p>buscar-empresa works!</p>
+
+<a routerLink="/empresa-ser/crear-empresa" class="btn btn-primary" id="crearEmpresa">Agregar Empresa</a>
+
+<div class="col s12 m9">
+    <div class="card horizontal">
+      <div class="card-stacked">
+        <div class="card-content">
+            <table class="table responsive centered">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Direccion</th>
+                        <th>Email</th>
+                        <th>Telefono</th>
+                        <th>Nit</th>
+                        <th>Acciones</th>
+                     </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let emp of listadoRegistros">
+                        <td>{{ emp.nombre }}</td>
+                        <td>{{ emp.direccion }}</td>
+                        <td>{{ emp.email }}</td>
+                        <td>{{ emp.telefono }}</td>
+                        <td>{{ emp.nit }}</td>
+                        <td>
+                            <a routerLink="/empresa-ser/editar-empresa/{{ emp.id }}" class="btn btn-primary"><i class="material-icons prefix">edit</i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>            
+        </div>
+      </div>
+    </div>
+  </div>
+
+

@@ -26,3 +26,5 @@ export * from './servicios-empresa.controller';
 export * from './servicios-tipo-servicio.controller';
 export * from './empresa-servicios.controller';
 export * from './tipo-servicio-servicios.controller';
+export * from './servicio.controller';
+export * from './tipo-servicio.controller';

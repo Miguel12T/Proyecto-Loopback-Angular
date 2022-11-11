@@ -17,6 +17,7 @@ import { CrearTipoComponent } from './tipo-servicio/crear-tipo/crear-tipo.compon
 import { EditarTipoComponent } from './tipo-servicio/editar-tipo/editar-tipo.component';
 import { EliminarTipoComponent } from './tipo-servicio/eliminar-tipo/eliminar-tipo.component';
 import { BuscarTipoComponent } from './tipo-servicio/buscar-tipo/buscar-tipo.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -39,7 +40,9 @@ import { BuscarTipoComponent } from './tipo-servicio/buscar-tipo/buscar-tipo.com
   ],
   imports: [
     CommonModule,
-    EmpresaSerRoutingModule
+    EmpresaSerRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class EmpresaSerModule { }

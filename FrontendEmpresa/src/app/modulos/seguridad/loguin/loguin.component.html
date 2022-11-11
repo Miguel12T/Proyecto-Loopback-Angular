@@ -1,1 +1,43 @@
-<p>loguin works!</p>
+  <div id="login-page" class="row">
+    <div class="col s12 z-depth-6 card-panel">
+      <form [formGroup]="fgValidador" (ngSubmit)="identificarUsuario()" class="login-form">
+        <div class="container">
+        <div class="row">
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">person</i>
+            <input formControlName="usuario" class="validate" id="text" type="text">
+            <label for="text" data-error="wrong" data-success="right">Identificacion</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">vpn_key</i>
+            <input formControlName="clave" type="password" id="password" type="password">
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <!-- <div class="row">          
+          <div class="input-field col s12 m12 l12  login-text">
+              <input type="checkbox" id="remember-me" />
+              <label for="remember-me">Remember me</label>
+          </div>
+        </div> -->
+        <div class="row">
+          <div class="input-field col s8 offset-s2">
+            <button [disabled]="!fgValidador.valid" type="submit" class="btn waves-effect waves-light col s12">Ingresar</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6 m6 l6">
+            <p class="margin medium-small"><a href="#">Register Now!</a></p>
+          </div>
+          <div class="input-field col s6 m6 l6">
+              <p class="margin right-align medium-small"><a href="#">Forgot password?</a></p>
+          </div>          
+        </div>
+      </div>
+      </form>
+    </div>
+  </div> 

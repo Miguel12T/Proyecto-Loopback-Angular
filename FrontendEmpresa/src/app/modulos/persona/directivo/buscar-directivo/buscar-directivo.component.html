@@ -1,1 +1,30 @@
-<p>buscar-directivo works!</p>
+<a routerLink="/persona/crear-directivo" class="btn btn-primary" id="crearDirectivo">Agregar Directivo</a>
+
+<div class="col s12 m9">
+    <div class="card horizontal">
+      <div class="card-stacked">
+        <div class="card-content">
+            <table class="table responsive centered">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Categoria</th>
+                        <th>Acciones</th>
+                     </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let dir of listadoRegistros">
+                        <td>{{ dir.empleadoId }}</td>
+                        <td>{{ dir.categoria }}</td>
+                        <td>
+                            <a routerLink="/persona/editar-directivo/{{ dir.id }}" class="btn btn-primary"><i class="material-icons prefix">edit</i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>            
+        </div>
+      </div>
+    </div>
+  </div>
+
+

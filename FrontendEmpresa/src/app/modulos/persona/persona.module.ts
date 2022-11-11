@@ -27,6 +27,8 @@ import { CrearPersonasComponent } from './personas/crear-personas/crear-personas
 import { EditarPersonasComponent } from './personas/editar-personas/editar-personas.component';
 import { BuscarPersonasComponent } from './personas/buscar-personas/buscar-personas.component';
 import { EliminarPersonasComponent } from './personas/eliminar-personas/eliminar-personas.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DataTablesModule } from "angular-datatables";
 
 
 @NgModule({
@@ -59,7 +61,10 @@ import { EliminarPersonasComponent } from './personas/eliminar-personas/eliminar
   ],
   imports: [
     CommonModule,
-    PersonaRoutingModule
+    PersonaRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    DataTablesModule
   ]
 })
 export class PersonaModule { }

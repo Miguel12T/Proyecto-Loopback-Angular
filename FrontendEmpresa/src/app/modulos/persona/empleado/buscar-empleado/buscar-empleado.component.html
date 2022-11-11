@@ -1,1 +1,31 @@
-<p>buscar-empleado works!</p>
+<a routerLink="/persona/crear-empleado" class="btn btn-primary" id="crearEmpleado">Agregar Empleado</a>
+
+<div class="col s12 m9">
+    <div class="card horizontal">
+      <div class="card-stacked">
+        <div class="card-content">
+            <table datatable [dtTrigger]="dtTrigger" class="row-border hover">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Sueldo Bruto</th>
+                        <th>Empresa</th>
+                        <th>Acciones</th>
+                     </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let emp of listadoRegistros">
+                        <td>{{ emp.personaId }}</td>
+                        <td>{{ emp.sueldo_bruto }}</td>
+                        <td>{{ emp.empresaId }}</td>
+                        <td>
+                            <a routerLink="/persona/editar-empleado/{{ emp.id }}" class="btn btn-primary"><i class="material-icons prefix">edit</i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>            
+        </div>
+      </div>
+    </div>
+  </div>
+

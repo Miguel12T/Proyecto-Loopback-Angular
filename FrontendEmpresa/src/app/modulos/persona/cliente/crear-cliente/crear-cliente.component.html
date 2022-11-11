@@ -1,1 +1,33 @@
-<p>crear-cliente works!</p>
+<h4 class="center-aling">Crear Cliente</h4>
+
+<div class="container">
+    <form [formGroup]="fgValidador" (ngSubmit)="guardarCliente()" method="post">
+
+        <div class="row col s10">
+            <div class="col s2">
+                <label class="col-form-label">Telefono</label>
+            </div>
+            <div class="col s13">
+                <input formControlName="telefono" type="number" class="form-control" required>
+            </div>
+        </div>
+        <div class="row col s10">
+            <div class="col s2">
+                <label class="col-form-label">Persona</label>
+            </div>
+            <div class="col s13 col lg13">
+                <select formControlName="personaId" class="browser-default">
+                    <option value="" disabled selected>Seleccione una persona</option>
+                    <option *ngFor="let per of listadoRegistros" [value]="per.id">{{ per.nombre }} {{ per.apellidos }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="row col s10">
+            <div class="col s5 col lg5">
+                <button [disabled]="!fgValidador.valid" type="submit" class="btn btn-primary">Guardar
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div> 

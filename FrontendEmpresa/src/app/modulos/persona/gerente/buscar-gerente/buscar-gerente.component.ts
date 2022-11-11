@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModeloGerente } from 'src/app/modelos/gerente.modelo';
+import { GerenteService } from 'src/app/servicios/gerente.service';
 
 @Component({
   selector: 'app-buscar-gerente',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BuscarGerenteComponent implements OnInit {
 
-  constructor() { }
+  listadoRegistros: ModeloGerente[] = [];
+
+  constructor(private servicioGerente: GerenteService) { }
 
   ngOnInit(): void {
+    this.obtenerListadoGerentes();
+  }
+
+  obtenerListadoGerentes(){
+    this.servicioGerente.obtenerRegistros().subscribe((datos: ModeloGerente[])=>{
+      this.listadoRegistros = datos;
+    })
   }
 
 }

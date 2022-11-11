@@ -1,1 +1,37 @@
-<p>buscar-personas works!</p>
+<a routerLink="/persona/crear-persona" class="btn btn-primary" id="crearPersona">Agregar Persona</a>
+
+<div class="col s12 m9">
+    <div class="card horizontal">
+      <div class="card-stacked">
+        <div class="card-content">
+            <table class="table responsive centered">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Identificacion</th>
+                        <th>Fecha de nacimiento</th>
+                        <th>Email</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                     </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of listadoRegistros">
+                        <td>{{ p.nombre }}</td>
+                        <td>{{ p.apellidos }}</td>
+                        <td>{{ p.identificacion }}</td>
+                        <td>{{ p.fecha_nacimiento }}</td>
+                        <td>{{ p.email }}</td>
+                        <td>{{ p.estado }}</td>
+                        <td>
+                            <a routerLink="/persona/editar-persona/{{ p.id }}" class="btn btn-primary"><i class="material-icons prefix">edit</i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>            
+        </div>
+      </div>
+    </div>
+  </div>
+

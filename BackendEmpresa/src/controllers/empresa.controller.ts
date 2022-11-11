@@ -60,7 +60,7 @@ export class EmpresaController {
   ): Promise<Count> {
     return this.empresaRepository.count(where);
   }
-
+  @authenticate.skip()
   @get('/empresas')
   @response(200, {
     description: 'Array of Empresa model instances',

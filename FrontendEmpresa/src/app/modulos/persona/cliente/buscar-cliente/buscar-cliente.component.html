@@ -1,1 +1,32 @@
-<p>buscar-cliente works!</p>
+
+<a routerLink="/persona/crear-cliente" class="btn btn-primary" id="crearCliente">Agregar Cliente</a>
+
+<div class="col s12 m9">
+    <div class="card horizontal">
+      <div class="card-stacked">
+        <div class="card-content">
+            <table class="table responsive centered">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Telefono</th>
+                        <th>Acciones</th>
+                     </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let c of listadoRegistros">
+                        <td>{{ c.personaId }}</td>
+                        <td>{{ c.personaId }}</td>
+                        <td>{{ c.telefono }}</td>
+                        <td>
+                            <a routerLink="/persona/editar-cliente/{{ c.id }}" class="btn btn-primary"><i class="material-icons prefix">edit</i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>            
+        </div>
+      </div>
+    </div>
+  </div>
+
