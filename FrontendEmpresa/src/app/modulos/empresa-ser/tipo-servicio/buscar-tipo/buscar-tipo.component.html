@@ -1,1 +1,19 @@
-<p>buscar-tipo works!</p>
+<a routerLink="/empresa-ser/crear-tipo" class="btn">Nuevo Tipo Servicio</a>
+<table class="table responsive">
+    <thead>
+        <tr>
+             <th>nombre tipo servicio</th>
+             <th>Editar tipo Servicio</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of listadoTiposervicio">
+            <td>
+                {{ p.tipo }}
+            </td>
+            <td>
+                <a routerLink="/empresa-ser/editar-tipo/{{p.id}}" class="btn btn-primary"><i class="material-icons prefix">edit</i></a>
+            </td>
+        </tr>
+    </tbody>
+</table>

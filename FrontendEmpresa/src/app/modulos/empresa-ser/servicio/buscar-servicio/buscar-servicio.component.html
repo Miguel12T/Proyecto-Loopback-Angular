@@ -1,1 +1,24 @@
-<p>buscar-servicio works!</p>
+
+<table class="table responsive">
+    <thead>
+        <tr>
+             <th>tipo servicio</th>
+             <th>nombre empresa</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let ser of listadoServicio">
+            <td>
+                {{ ser.empresaId }}
+            </td>
+            <td>
+                {{ ser.tipoServicioId }}
+            </td>
+            <td>
+                <a routerLink="/empresa-ser/editar-servicio" class="btn btn-primary"><i class="material-icons prefix">edit</i></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
