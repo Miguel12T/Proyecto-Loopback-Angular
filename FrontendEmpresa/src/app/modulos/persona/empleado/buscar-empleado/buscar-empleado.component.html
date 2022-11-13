@@ -4,7 +4,7 @@
     <div class="card horizontal">
       <div class="card-stacked">
         <div class="card-content">
-            <table datatable [dtTrigger]="dtTrigger" class="row-border hover">
+            <table datatable  [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover table responsive centered">
                 <thead>
                     <tr>
                         <th>Nombre</th>
@@ -14,9 +14,9 @@
                      </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let emp of listadoRegistros">
-                        <td>{{ emp.personaId }}</td>
-                        <td>{{ emp.sueldo_bruto }}</td>
+                    <tr *ngFor="let emp of listadoRegistros"> 
+                        <td>{{ emp.nombre }} {{ emp.apellidos }}</td>
+                        <td>{{ emp.sueldo_bruto }}</td> 
                         <td>{{ emp.empresaId }}</td>
                         <td>
                             <a routerLink="/persona/editar-empleado/{{ emp.id }}" class="btn btn-primary"><i class="material-icons prefix">edit</i></a>

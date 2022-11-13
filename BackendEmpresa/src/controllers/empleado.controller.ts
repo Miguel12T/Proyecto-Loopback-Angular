@@ -19,7 +19,7 @@ import {
   response,
 } from '@loopback/rest';
 import {Empleado} from '../models';
-import {EmpleadoRepository, PersonaRepository} from '../repositories';
+import {EmpleadoRepository, EmpresaRepository, PersonaRepository} from '../repositories';
 import { AutenticacionService, NotificacionService } from '../services';
 
 export class EmpleadoController {
@@ -31,7 +31,9 @@ export class EmpleadoController {
     @repository(PersonaRepository)
     public personaRepository:PersonaRepository,
     @service(NotificacionService)
-    public servicioNotificacion:NotificacionService
+    public servicioNotificacion:NotificacionService,
+    @repository(EmpresaRepository)
+    public empresaRepository: EmpresaRepository
   ) {}
 
   @post('/empleados')
@@ -79,6 +81,8 @@ export class EmpleadoController {
     return this.empleadoRepository.count(where);
   }
 
+   i = 0;
+   listadoPersonasEmpleados:  any[] = [];
   @get('/empleados')
   @response(200, {
     description: 'Array of Empleado model instances',
@@ -94,7 +98,24 @@ export class EmpleadoController {
   async find(
     @param.filter(Empleado) filter?: Filter<Empleado>,
   ): Promise<Empleado[]> {
-    return this.empleadoRepository.find(filter);
+    let emp = await this.empleadoRepository.find(filter);
+    for await (const iterator of emp) {
+      
+      const per =  this.personaRepository.findById(iterator.personaId);
+      const empre =  this.empresaRepository.findById(iterator.empresaId);
+      
+      this.i =+ 1
+        let i = {
+          "id": iterator.id,
+          "sueldo_bruto": iterator.sueldo_bruto,
+          "empresaId": (await empre).nombre,
+          "nombre": (await per).nombre,
+          "apellidos": (await per).apellidos
+        }
+        this.listadoPersonasEmpleados.push(i);
+    }
+    return this.listadoPersonasEmpleados
+
   }
 
   @patch('/empleados')

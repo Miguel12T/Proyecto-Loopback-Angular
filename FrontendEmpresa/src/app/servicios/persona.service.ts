@@ -20,6 +20,14 @@ export class PersonaService {
     return this.http.get<ModeloPersona>(`${this.url}/personas/${id}`)
   }
 
+  obtenerRegistroPersonasId(id:any):Observable<ModeloPersona[]>{
+    return this.http.get<ModeloPersona[]>(`${this.url}/empleados/${id}/persona`,{
+      headers: new HttpHeaders({
+        
+      })
+    })
+  }
+
   crearPersona(persona: ModeloPersona): Observable<ModeloPersona>{
     return this.http.post<ModeloPersona>(`${this.url}/personas`,persona, {
       headers: new HttpHeaders({
@@ -27,6 +35,7 @@ export class PersonaService {
       })
     })
   }
+
 
   actualizarPersona(persona: ModeloPersona): Observable<ModeloPersona>{
     return this.http.put<ModeloPersona>(`${this.url}/personas/${persona.id}`,persona, {
