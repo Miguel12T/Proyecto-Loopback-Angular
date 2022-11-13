@@ -3,6 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { BuscarEmpresaComponent } from './empresa/buscar-empresa/buscar-empresa.component';
 import { CrearEmpresaComponent } from './empresa/crear-empresa/crear-empresa.component';
 import { EditarEmpresaComponent } from './empresa/editar-empresa/editar-empresa.component';
+import { BuscarServicioComponent } from './servicio/buscar-servicio/buscar-servicio.component';
+import { EditarServicioComponent } from './servicio/editar-servicio/editar-servicio.component';
+import { BuscarTipoComponent } from './tipo-servicio/buscar-tipo/buscar-tipo.component';
+import { CrearTipoComponent } from './tipo-servicio/crear-tipo/crear-tipo.component';
+import { EditarTipoComponent } from './tipo-servicio/editar-tipo/editar-tipo.component';
 
 const routes: Routes = [
   {
@@ -17,6 +22,27 @@ const routes: Routes = [
     path:'editar-empresa/:id',
     component: EditarEmpresaComponent
   },
+  {
+    path:'listar-tipo',
+    component: BuscarTipoComponent
+  },
+  {
+    path:'crear-tipo',
+    component: CrearTipoComponent
+  },
+  {
+    path:'editar-tipo/:id',
+    component: EditarTipoComponent
+  },
+  {
+    path:'listar-servicio',
+    component: BuscarServicioComponent
+  },
+  {
+    path:'editar-tipo/:id',
+    component: EditarServicioComponent
+  }
+
 ];
 
 @NgModule({
