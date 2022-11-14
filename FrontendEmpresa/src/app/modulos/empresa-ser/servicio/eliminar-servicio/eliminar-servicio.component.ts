@@ -36,7 +36,16 @@ export class EliminarServicioComponent implements OnInit {
     this.obtenerlistadoTiposervicios();
     this.obtenerListadoEmpresas();
     this.id=this.route.snapshot.params["id"];
+    this.BuscarServicio();
 
+  }
+
+  BuscarServicio(){
+    this.servicio.ObtenerServicioPorId(this.id).subscribe((datos:ModeloServicio)=>{
+      this.fgValidador.controls["id"].setValue(this.id);
+      this.fgValidador.controls["empresaId"].setValue(datos.empresaId);
+      this.fgValidador.controls["tipoServicioId"].setValue(datos.tipoServicioId);
+    })
   }
   
   EliminarServicio(){

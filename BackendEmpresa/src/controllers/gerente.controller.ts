@@ -19,7 +19,7 @@ import {
   response,
 } from '@loopback/rest';
 import {Gerente} from '../models';
-import {GerenteRepository, PersonaRepository} from '../repositories';
+import {EmpresaRepository, GerenteRepository, PersonaRepository} from '../repositories';
 import { AutenticacionService, NotificacionService } from '../services';
 
 export class GerenteController {
@@ -31,7 +31,9 @@ export class GerenteController {
     @repository(PersonaRepository)
     public personaRepository:PersonaRepository,
     @service(AutenticacionService)
-    public servicioAutenticacion:AutenticacionService
+    public servicioAutenticacion:AutenticacionService,
+    @repository(EmpresaRepository)
+    public empresaRepository : EmpresaRepository,
   ) {}
 
   @post('/gerentes')
@@ -79,6 +81,8 @@ export class GerenteController {
     return this.gerenteRepository.count(where);
   }
 
+  i=0;
+  listadoGere: any[] = [];
   @get('/gerentes')
   @response(200, {
     description: 'Array of Gerente model instances',
@@ -94,7 +98,26 @@ export class GerenteController {
   async find(
     @param.filter(Gerente) filter?: Filter<Gerente>,
   ): Promise<Gerente[]> {
-    return this.gerenteRepository.find(filter);
+    let gere = await this.gerenteRepository.find(filter);
+    for await(const iterator of gere)
+    {
+
+      const per= this.personaRepository.findById(iterator.personaId);
+      const empre= this.empresaRepository.findById(iterator.empresaId);
+
+      this.i =+ 1
+        let i = {
+          "id": iterator.id,
+          "tipo_cargo":iterator.tipo_cargo,
+          "empresaId": (await empre).nombre,
+          "nombre": (await per).nombre,
+          "apellidos": (await per).apellidos
+        }
+        this.listadoGere.push(i);
+
+    }
+
+    return this.listadoGere
   }
 
   @patch('/gerentes')

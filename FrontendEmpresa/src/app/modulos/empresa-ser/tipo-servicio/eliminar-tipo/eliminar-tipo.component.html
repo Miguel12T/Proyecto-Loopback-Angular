@@ -1,1 +1,22 @@
-<p>eliminar-tipo works!</p>
+<h4 class="center-aling">Eliminar Tipo Servicio</h4>
+
+<div class="container">
+    <form [formGroup]="fgValidador" (ngSubmit)="EliminarTipo()" method="post">
+        <input type="hidden" formControlName="id">
+        <div class="row col s10">
+            <div class="col s2">
+                <label class="col-form-label">Nombre Tipo Servicio</label>
+            </div>
+            <div class="col s13">
+                <input formControlName="tipo" type="text" class="form-control" required>
+            </div>
+        </div>
+        <div class="row col s10">
+            <div class="col s5 col lg5">
+                <button [disabled]="!fgValidador.valid" type="submit" class="btn btn-primary">Eliminar
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div> 

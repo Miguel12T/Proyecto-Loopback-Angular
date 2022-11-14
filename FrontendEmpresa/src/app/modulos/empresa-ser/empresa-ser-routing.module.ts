@@ -11,6 +11,7 @@ import { ServicioComponent } from './servicio/servicio.component';
 import { BuscarTipoComponent } from './tipo-servicio/buscar-tipo/buscar-tipo.component';
 import { CrearTipoComponent } from './tipo-servicio/crear-tipo/crear-tipo.component';
 import { EditarTipoComponent } from './tipo-servicio/editar-tipo/editar-tipo.component';
+import { EliminarTipoComponent } from './tipo-servicio/eliminar-tipo/eliminar-tipo.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,10 @@ const routes: Routes = [
     component: EditarTipoComponent
   },
   {
+    path:'eliminar-tipo/:id',
+    component: EliminarTipoComponent
+  },
+  {
     path:'listar-servicio',
     component: BuscarServicioComponent
   },
@@ -54,7 +59,7 @@ const routes: Routes = [
     component: EditarServicioComponent
   },
   {
-    path:'eliminar-servicio',
+    path:'eliminar-servicio/:id',
     component: EliminarServicioComponent
   }
 
