@@ -14,6 +14,7 @@ export class BuscarServicioComponent implements OnInit {
   constructor(private servicioServicio: ServicioService) { }
 
   ngOnInit(): void {
+    this.ObetenerlistadoServicio();
   }
 
   ObetenerlistadoServicio(){

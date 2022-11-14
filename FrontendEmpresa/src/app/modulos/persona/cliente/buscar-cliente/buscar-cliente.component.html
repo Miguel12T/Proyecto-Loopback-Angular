@@ -16,8 +16,8 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let c of listadoRegistros">
-                        <td>{{ c.personaId }}</td>
-                        <td>{{ c.personaId }}</td>
+                        <td>{{ c.nombre }}</td>
+                        <td>{{ c.apellidos }}</td>
                         <td>{{ c.telefono }}</td>
                         <td>
                             <a routerLink="/persona/editar-cliente/{{ c.id }}" class="btn btn-primary"><i class="material-icons prefix">edit</i></a>

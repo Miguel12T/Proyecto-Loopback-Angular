@@ -17,13 +17,19 @@ import {
   requestBody,
   response,
 } from '@loopback/rest';
+import { Console } from 'console';
 import {Servicios} from '../models';
-import {ServiciosRepository} from '../repositories';
+import {EmpresaRepository, ServiciosRepository, TipoServicioRepository} from '../repositories';
+
 
 export class ServicioController {
   constructor(
     @repository(ServiciosRepository)
     public serviciosRepository : ServiciosRepository,
+    @repository(TipoServicioRepository)
+    public tiposervicioRepository : TipoServicioRepository,
+    @repository(EmpresaRepository)
+    public empresaRepository : EmpresaRepository,
   ) {}
 
   @post('/servicios')
@@ -58,6 +64,8 @@ export class ServicioController {
     return this.serviciosRepository.count(where);
   }
 
+  i=0;
+  listadoSer: any[] = [];
   @get('/servicios')
   @response(200, {
     description: 'Array of Servicios model instances',
@@ -73,7 +81,24 @@ export class ServicioController {
   async find(
     @param.filter(Servicios) filter?: Filter<Servicios>,
   ): Promise<Servicios[]> {
-    return this.serviciosRepository.find(filter);
+    let ser = await this.serviciosRepository.find(filter);
+    for await(const iterator of ser)
+    {
+
+      const tipo= this.tiposervicioRepository.findById(iterator.tipoServicioId);
+      const empre= this.empresaRepository.findById(iterator.empresaId);
+
+      this.i =+ 1
+        let i = {
+          "id": iterator.id,
+          "empresaId": (await empre).nombre,
+          "tipoServicioId": (await tipo).tipo
+         
+        }
+        this.listadoSer.push(i);
+
+    }
+    return this.listadoSer
   }
 
   @patch('/servicios')

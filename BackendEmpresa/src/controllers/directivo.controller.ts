@@ -24,6 +24,7 @@ export class DirectivoController {
   constructor(
     @repository(DirectivoRepository)
     public directivoRepository : DirectivoRepository,
+   
   ) {}
 
   @post('/directivos')

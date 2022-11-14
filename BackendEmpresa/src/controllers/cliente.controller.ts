@@ -102,6 +102,7 @@ export class ClienteController {
 
   }
 
+ 
   @get('/clientes/count')
   @response(200, {
     description: 'Cliente model count',
@@ -113,6 +114,8 @@ export class ClienteController {
     return this.clienteRepository.count(where);
   }
 
+  i = 0;
+  listadoPersonasCliente:  any[] = [];
   @get('/clientes')
   @response(200, {
     description: 'Array of Cliente model instances',
@@ -128,7 +131,21 @@ export class ClienteController {
   async find(
     @param.filter(Cliente) filter?: Filter<Cliente>,
   ): Promise<Cliente[]> {
-    return this.clienteRepository.find(filter);
+    let cli = await this.clienteRepository.find(filter);
+    for await (const iterator of cli) {
+      
+      const per =  this.personaRepository.findById(iterator.personaId);
+      
+      this.i =+ 1
+        let i = {
+          "id": iterator.id,
+          "nombre": (await per).nombre,
+          "apellidos": (await per).apellidos,
+          "telefono":iterator.telefono
+        }
+        this.listadoPersonasCliente.push(i);
+    }
+    return this.listadoPersonasCliente
   }
 
   @patch('/clientes')

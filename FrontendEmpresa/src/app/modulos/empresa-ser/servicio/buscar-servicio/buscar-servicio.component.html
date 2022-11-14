@@ -1,9 +1,11 @@
-
+<a routerLink="/empresa-ser/crear-servicio" class="btn btn-primary" id="crearServicio">Agregar Servicio</a>
 <table class="table responsive">
     <thead>
         <tr>
+            <th>nombre empresa</th>
              <th>tipo servicio</th>
-             <th>nombre empresa</th>
+             <th>Editar</th>
+             <th>Eliminar</th>
         </tr>
     </thead>
     <tbody>
@@ -15,8 +17,12 @@
                 {{ ser.tipoServicioId }}
             </td>
             <td>
-                <a routerLink="/empresa-ser/editar-servicio" class="btn btn-primary"><i class="material-icons prefix">edit</i></a>
+                <a routerLink="/empresa-ser/editar-servicio/{{ser.id}}" class="btn btn-primary"><i class="material-icons prefix">edit</i></a>
             </td>
+            <td>
+                <a routerLink="/empresa-ser/eliminar-servicio/{{ser.id}}" class="btn btn-primary" ><i class="material-icons prefix">close</i></a>
+            </td>
+            
         </tr>
     </tbody>
 </table>

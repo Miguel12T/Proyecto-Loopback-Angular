@@ -10,6 +10,14 @@ export class ServicioService {
 
   url='http://localhost:3000';
   constructor(private http: HttpClient) { }
+  
+  CrearServicio(servicio:ModeloServicio):Observable<ModeloServicio>{
+    return this.http.post<ModeloServicio>(`${this.url}/servicios`,servicio)
+  }
+
+  ActualizarServicio(servicio:ModeloServicio):Observable<ModeloServicio>{
+    return this.http.put<ModeloServicio>(`${this.url}/servicios/${servicio.id}`,servicio)
+  }
 
   ObtenerServicio(): Observable<ModeloServicio[]>{
     return this.http.get<ModeloServicio[]>(`${this.url}/servicios`)
