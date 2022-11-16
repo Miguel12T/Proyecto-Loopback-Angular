@@ -1,12 +1,15 @@
-<h4 class="center-aling">Editar Tipo Servicio</h4>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item active">Sección Actualizar Tipo de Servicios</li>
+</ol>
+<h3>Modificar Datos</h3>
 
 <div class="container">
 
-    <form [formGroup]="fgValidador" (ngSubmit)="EditarTipo()" method="post">
+    <form [formGroup]="fgValidador" (ngSubmit)="EditarTipo()" id="formList" method="post">
         <input type="hidden" formControlName="id">
         <div class="row col s10">
             <div class="col s2">
-                <label class="col-form-label">Nombre Tipo Servicio</label>
+                <label class="col-form-label">Tipo de Servicio</label>
             </div>
             <div class="col s13">
                 <input formControlName="tipo" type="text" class="form-control" required>
@@ -14,9 +17,7 @@
         </div>
         <div class="row col s10">
             <div class="col s5 col lg5">
-                <button [disabled]="!fgValidador.valid" type="submit" class="btn btn-primary">Actualizar
-                    <i class="material-icons right">send</i>
-                </button>
+                <button [disabled]="!fgValidador.valid" type="submit" class="waves-effect waves-light btn-small">Guardar</button>
             </div>
         </div>
     </form>

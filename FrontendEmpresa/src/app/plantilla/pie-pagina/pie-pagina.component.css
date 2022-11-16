@@ -1,3 +1,10 @@
-footer{
-    background-color: rgb(76, 73, 226);
+#footer{
+    background-color: #222222;
+    color: #777;
+    padding: 15px 0 10px 0;
+    background-color: #233242;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.container{
+    margin-left: 1100px;
 }

@@ -1,35 +1,36 @@
-<h4 class="center-aling">Editar Directivo</h4>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item active">Sección Actualizar Directivos</li>
+</ol>
+<h3>Modificar Datos</h3>
 
 <div class="container">
-    <form [formGroup]="fgValidador" (ngSubmit)="editarDirectivo()" method="post">
+    <form [formGroup]="fgValidador" (ngSubmit)="editarDirectivo()" id="formList" method="post">
         <input type="hidden" formControlName="id">
-        <div class="row col s12">
+        <div class="row col s10">
             <div class="col s2">
                 <label class="col-form-label">Empleado</label>
             </div>
-            <div class="col s4">
+            <div class="col s5">
                 <select formControlName="empleadoId" class="browser-default">
                     <option value="" disabled selected>Seleccione un empleado</option>
-                    <option *ngFor="let emp of listadoRegistrosEmpleado" [value]="emp.id">{{ emp.id }}</option>
+                    <option *ngFor="let emp of listadoRegistrosEmpleado" [value]="emp.id">{{ emp.nombre }} {{  emp.apellidos  }}</option>
                 </select>
             </div>
-    
+        </div>
+        <div class="row col s10">
             <div class="col s2">
                 <label class="col-form-label">Categoria</label>
                 </div>
-            <div class="col s4 col lg4">
+            <div class="col s5 col lg5">
                 <input formControlName="categoria" type="text" class="form-control" required>
             </div>
         </div>
 
         <div class="row col s12">
             <div class="col s5">
-                <button [disabled]="!fgValidador.valid" type="submit" class="btn btn-primary">Guardar
-                    <i class="material-icons right">send</i>
-                </button>
+                <button [disabled]="!fgValidador.valid" type="submit" class="waves-effect waves-light btn-small">Guardar</button>
             </div>
         </div>
-   
     </form>
 </div> 
 

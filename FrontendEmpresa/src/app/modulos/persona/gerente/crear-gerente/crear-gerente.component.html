@@ -1,7 +1,10 @@
-<h4 class="center-aling">Crear Gerente</h4>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item active">Sección Agregar Gerentes</li>
+</ol>
+<h3>Creación de Gerente</h3>
 
 <div class="container">
-    <form [formGroup]="fgValidador" (ngSubmit)="guardarGerente()" method="post">
+    <form [formGroup]="fgValidador" (ngSubmit)="guardarGerente()" id="formList" method="post">
 
         <div class="row col s12">
             <div class="col s2">
@@ -40,9 +43,7 @@
                 <label class="col-form-label"></label>
             </div>
             <div class="col s5 col lg5">
-                <button [disabled]="!fgValidador.valid" type="submit" class="btn btn-primary">Guardar
-                    <i class="material-icons right">send</i>
-                </button>
+                <button [disabled]="!fgValidador.valid" type="submit" class="waves-effect waves-light btn-small">Guardar</button>
             </div>
         </div>
    

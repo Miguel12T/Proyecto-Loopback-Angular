@@ -1,0 +1,33 @@
+#crearServicio{
+    margin-top: 1.3em;
+    margin-left: 49px;
+    width: 230px;
+    height: 45px;
+    font-size: 16px;
+    background-color: #7460ee;
+    border-color: #7460ee;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+th { color:#6a7a8c; }
+
+td { color:#6a7a8c; }
+
+table{
+    font-family:Arial, Helvetica, sans-serif;   
+}
+
+#tituloServicio{
+    width: 825px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    margin-left: 49px;
+    list-style: none;
+    background-color: #e9ecef;
+    color: #6a7a8c;
+    border-radius: 0.25rem;
+    font-size: 25px;
+    text-align: center;
+    font-family:Arial, Helvetica, sans-serif;   
+}
+

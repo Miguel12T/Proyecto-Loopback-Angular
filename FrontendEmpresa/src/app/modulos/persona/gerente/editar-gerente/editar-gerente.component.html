@@ -1,7 +1,10 @@
-<h4 class="center-aling">Editar Gerente</h4>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item active">Sección Actualizar Gerentes</li>
+</ol>
+<h3>Modificar Datos</h3>
 
 <div class="container">
-    <form [formGroup]="fgValidador" (ngSubmit)="editarGerente()" method="post">
+    <form [formGroup]="fgValidador" (ngSubmit)="editarGerente()" id="formList" method="post">
         <input type="hidden" formControlName="id">
         <div class="row col s10">
             <div class="col s2">
@@ -36,13 +39,8 @@
                     <option *ngFor="let emp of listadoRegistrosEmpresa" [value]="emp.id">{{ emp.nombre }}</option>
                 </select>
             </div>
-            <div class="col s2">
-                <label class="col-form-label"></label>
-            </div>
             <div class="col s4 col lg4">
-                <button [disabled]="!fgValidador.valid" type="submit" class="btn btn-primary">Actualizar
-                    <i class="material-icons right">send</i>
-                </button>
+                <button [disabled]="!fgValidador.valid" type="submit" class="waves-effect waves-light btn-small">Guardar</button>
             </div>
         </div>
    

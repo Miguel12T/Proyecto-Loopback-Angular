@@ -1,31 +1,46 @@
-<a routerLink="/empresa-ser/crear-servicio" class="btn btn-primary" id="crearServicio">Agregar Servicio</a>
-<table class="table responsive">
-    
-    <thead>
-        <tr>
-            <th>nombre empresa</th>
-             <th>tipo servicio</th>
-             <th>Editar</th>
-             <th>Eliminar</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let ser of listadoServicio">
-            <td>
-                {{ ser.empresaId }}
-            </td>
-            <td>
-                {{ ser.tipoServicioId }}
-            </td>
-            <td>
-                <a routerLink="/empresa-ser/editar-servicio/{{ser.id}}" class="btn btn-primary"><i class="material-icons prefix">edit</i></a>
-            </td>
-            <td>
-                <a routerLink="/empresa-ser/eliminar-servicio/{{ser.id}}" class="btn btn-primary" ><i class="material-icons prefix">close</i></a>
-            </td>
-            
-        </tr>
-    </tbody>
-</table>
+<h3 class="breadcrumb-item active" id="tituloServicio">Servicios</h3>
 
+<a routerLink="/empresa-ser/crear-servicio" class="btn btn-primary"
+    id="crearServicio">Agregar Servicio</a>
 
+<div class="col s12 m9">
+    <div class="card horizontal">
+        <div class="card-stacked">
+            <div class="card-content">
+                <table class="table responsive centered">
+                    <thead>
+                        <tr>
+                            <th>nombre empresa</th>
+                            <th>tipo servicio</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let ser of listadoServicio">
+                            <td>
+                                {{ ser.empresaId }}
+                            </td>
+                            <td>
+                                {{ ser.tipoServicioId }}
+                            </td>
+                            <td>
+                                <a
+                                    routerLink="/empresa-ser/editar-servicio/{{ser.id}}"
+                                    class="btn btn-primary"><i
+                                        class="material-icons prefix">edit</i></a>
+                            </td>
+                            <td>
+                                <a
+                                    routerLink="/empresa-ser/eliminar-servicio/{{ser.id}}"
+                                    class="btn btn-primary"><i
+                                        class="material-icons prefix">close</i></a>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -18,12 +18,16 @@ import {
   response,
 } from '@loopback/rest';
 import {Directivo} from '../models';
-import {DirectivoRepository} from '../repositories';
+import {DirectivoRepository, EmpleadoRepository, PersonaRepository} from '../repositories';
 
 export class DirectivoController {
   constructor(
     @repository(DirectivoRepository)
     public directivoRepository : DirectivoRepository,
+    @repository(PersonaRepository)
+    public personaRepository : PersonaRepository,
+    @repository(EmpleadoRepository)
+    public empleadoRepository : EmpleadoRepository
    
   ) {}
 
@@ -59,6 +63,8 @@ export class DirectivoController {
     return this.directivoRepository.count(where);
   }
 
+  i = 0;
+  listadoPersonasEmpleados:  any[] = [];
   @get('/directivos')
   @response(200, {
     description: 'Array of Directivo model instances',
@@ -74,7 +80,22 @@ export class DirectivoController {
   async find(
     @param.filter(Directivo) filter?: Filter<Directivo>,
   ): Promise<Directivo[]> {
-    return this.directivoRepository.find(filter);
+    let dir = await this.directivoRepository.find(filter);
+    for await (const iterator of dir) {
+      
+      const EmpleadoPer =  this.empleadoRepository.findById(iterator.empleadoId);
+      const Per =  this.personaRepository.findById((await EmpleadoPer).personaId);
+      
+      this.i =+ 1
+        let i = {
+          "id": iterator.id,
+          "categoria": iterator.categoria,
+          "nombre": (await Per).nombre,
+          "apellidos": (await Per).apellidos
+        }
+        this.listadoPersonasEmpleados.push(i);
+    }
+    return this.listadoPersonasEmpleados
   }
 
   @patch('/directivos')

@@ -19,4 +19,9 @@ form {
 
 #login-page {
    width: 440px;
+   padding-top: 30px;
+}
+
+#ident{
+    padding-top: 50px;
 }

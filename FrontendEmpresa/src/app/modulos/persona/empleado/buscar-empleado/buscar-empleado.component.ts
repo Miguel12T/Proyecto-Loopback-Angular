@@ -15,7 +15,6 @@ import { PersonaService } from 'src/app/servicios/persona.service';
 export class BuscarEmpleadoComponent implements OnInit, OnDestroy {
 
   listadoRegistros: ModeloEmpleado[] = [];
-  i = 0
   
   dtOptions: DataTables.Settings = {}
   dtTrigger: Subject<any> = new Subject<any>();
@@ -25,7 +24,6 @@ export class BuscarEmpleadoComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.obtenerListadoEmpleados();
-    this.obtenerListadoPerEmpleados();
     this.dtOptions = {
       responsive: true,
       lengthMenu: [[5, 25, 50, -1],
@@ -44,10 +42,6 @@ export class BuscarEmpleadoComponent implements OnInit, OnDestroy {
       this.listadoRegistros = datos
       this.dtTrigger.next(datos);
     })
-  }
-
-  obtenerListadoPerEmpleados(){
-    
   }
   
   ngOnDestroy(): void {

@@ -1,10 +1,11 @@
-<a routerLink="/persona/crear-persona" class="btn btn-primary" id="crearPersona">Agregar Persona</a>
+<h3 class="breadcrumb-item active" id="tituloPersona">Personas</h3>
 
+<a routerLink="/persona/crear-persona" class="btn waves-effect waves-light" id="crearPersona">Agregar Persona</a>
 <div class="col s12 m9">
     <div class="card horizontal">
       <div class="card-stacked">
         <div class="card-content">
-            <table class="table responsive centered">
+            <table datatable  [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table responsive centered">
                 <thead>
                     <tr>
                         <th>Nombre</th>
@@ -18,15 +19,20 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let p of listadoRegistros">
+                    
                         <td>{{ p.nombre }}</td>
                         <td>{{ p.apellidos }}</td>
                         <td>{{ p.identificacion }}</td>
                         <td>{{ p.fecha_nacimiento }}</td>
                         <td>{{ p.email }}</td>
-                        <td>{{ p.estado }}</td>
                         <td>
-                            <a routerLink="/persona/editar-persona/{{ p.id }}" class="btn btn-primary"><i class="material-icons prefix">edit</i></a>
+                            <span *ngIf="p.estado == true" id="span" class="new badge blue">Activo</span>
+                            <span *ngIf="p.estado == false" id="span" class="new badge red">Inactivo</span>
                         </td>
+                        <td>
+                            <a routerLink="/persona/editar-persona/{{ p.id }}" class="btn btn-floating btn waves-effect waves-light"><i class="material-icons prefix">edit</i></a>
+                        </td>
+
                     </tr>
                 </tbody>
             </table>            

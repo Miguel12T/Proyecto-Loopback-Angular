@@ -1,7 +1,10 @@
-<h4 class="center-aling">Crear Empresa</h4>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item active">Sección Agregar Empresas</li>
+</ol>
+<h3>Creación de Empresa</h3>
 
 <div class="container">
-    <form [formGroup]="fgValidador" (ngSubmit)="guardarEmpresa()" method="post">
+    <form [formGroup]="fgValidador" (ngSubmit)="guardarEmpresa()" id="formList" method="post">
 
         <div class="row col s10">
             <div class="col s2">
@@ -41,13 +44,8 @@
             <div class="col s3">
                 <input formControlName="nit" type="text" class="form-control" required>
             </div>
-            <div class="col s2">
-                <label class="col-form-label"></label>
-            </div>
             <div class="col s5 col lg5">
-                <button [disabled]="!fgValidador.valid" type="submit" class="btn btn-primary">Guardar
-                    <i class="material-icons right">send</i>
-                </button>
+                <button [disabled]="!fgValidador.valid" type="submit" class="waves-effect waves-light btn-small">Guardar</button>
             </div>
         </div>    
     </form>

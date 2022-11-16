@@ -9,6 +9,8 @@ import { InicioComponent } from './plantilla/inicio/inicio.component';
 import { ErrorComponent } from './plantilla/error/error.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DataTablesModule } from "angular-datatables";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { DataTablesModule } from "angular-datatables";
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    DataTablesModule
+    DataTablesModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

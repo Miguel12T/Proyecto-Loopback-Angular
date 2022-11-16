@@ -29,7 +29,7 @@ import { BuscarPersonasComponent } from './personas/buscar-personas/buscar-perso
 import { EliminarPersonasComponent } from './personas/eliminar-personas/eliminar-personas.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from "angular-datatables";
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -64,7 +64,8 @@ import { DataTablesModule } from "angular-datatables";
     PersonaRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    DataTablesModule
+    DataTablesModule,
+    FontAwesomeModule
   ]
 })
 export class PersonaModule { }

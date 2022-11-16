@@ -1,3 +1,9 @@
 nav{
-    background-color: rgb(76, 73, 226);
+    background-color: #233242;
+    font-family:Arial, Helvetica, sans-serif;
+}
+img{
+    width: 35px;
+    margin-top: 10px;
+    margin-left: 20px;
 }

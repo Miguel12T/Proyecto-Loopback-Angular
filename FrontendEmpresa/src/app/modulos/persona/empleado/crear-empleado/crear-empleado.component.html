@@ -1,7 +1,10 @@
-<h4 class="center-aling">Crear Empleado</h4>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item active">Sección Agregar Empleados</li>
+</ol>
+<h3>Creación de Empleado</h3>
 
 <div class="container">
-    <form [formGroup]="fgValidador" (ngSubmit)="guardarEmpleado()" method="post">
+    <form [formGroup]="fgValidador" (ngSubmit)="guardarEmpleado()" id="formList" method="post">
 
         <div class="row col s12">
             <div class="col s2">
@@ -9,7 +12,7 @@
             </div>
             <div class="col s4">
                 <select formControlName="personaId" class="browser-default">
-                    <option value="" disabled selected>Seleccione una persona</option>
+                    <option value="" disabled selected>Seleccione...</option>
                     <option *ngFor="let per of listadoRegistros" [value]="per.id">{{ per.nombre }} {{ per.apellidos }}</option>
                 </select>
             </div>
@@ -28,7 +31,7 @@
             </div>
             <div class="col s4">
                 <select formControlName="empresaId" class="browser-default">
-                    <option value="" disabled selected>Seleccione una empresa</option>
+                    <option value="" disabled selected>Seleccione...</option>
                     <option *ngFor="let emp of listadoRegistrosEmpresa" [value]="emp.id">{{ emp.nombre }}</option>
                 </select>
             </div>
@@ -36,9 +39,7 @@
                 <label class="col-form-label"></label>
             </div>
             <div class="col s5 col lg5">
-                <button [disabled]="!fgValidador.valid" type="submit" class="btn btn-primary">Guardar
-                    <i class="material-icons right">send</i>
-                </button>
+                <button [disabled]="!fgValidador.valid" type="submit" class="waves-effect waves-light btn-small">Guardar</button>
             </div>
         </div>
    

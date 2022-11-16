@@ -1,13 +1,16 @@
-<h4 class="center-aling">Crear Servicio</h4>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item active">Sección Agregar Servicios</li>
+</ol>
+<h3>Creación de Servicio</h3>
 
 <div class="container">
-    <form [formGroup]="fgValidador" (ngSubmit)="guardarServicio()" method="post">
+    <form [formGroup]="fgValidador" (ngSubmit)="guardarServicio()" id="formList" method="post">
 
         <div class="row col s12">
             <div class="col s2">
                 <label class="col-form-label">Empresa</label>
             </div>
-            <div class="col s4">
+            <div class="col s5">
                 <select formControlName="empresaId" class="browser-default">
                     <option value="" disabled selected>Seleccione una Empresa</option>
                     <option *ngFor="let emp of listadoRegistrosEmpresa" [value]="emp.id">{{ emp.nombre }} </option>
@@ -19,19 +22,16 @@
             <div class="col s2">
                 <label class="col-form-label">Tipo Servicio</label>
             </div>
-            <div class="col s4">
+            <div class="col s5">
                 <select formControlName="tipoServicioId" class="browser-default">
                     <option value="" disabled selected>Seleccione Tipo Servicio</option>
                     <option *ngFor="let tipos of listadoTiposervicios" [value]="tipos.id">{{ tipos.tipo }}</option>
                 </select>
             </div>
-            <div class="col s4">
-                <label class="col-form-label"></label>
-            </div>
+        </div>
+        <div class="row col s12">
             <div class="col s5 col lg5">
-                <button [disabled]="!fgValidador.valid" type="submit" class="btn btn-primary">Guardar
-                    <i class="material-icons right">send</i>
-                </button>
+                <button [disabled]="!fgValidador.valid" type="submit" class="waves-effect waves-light btn-small">Guardar</button>
             </div>
         </div>
     </form>
