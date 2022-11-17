@@ -74,7 +74,7 @@ export class EditarClienteComponent implements OnInit {
   }
 
   obtenerListadoPersonas(){
-    this.servicioPersona.obtenerRegistros().subscribe((datos: ModeloPersona[])=>{
+    this.servicioPersona.obtenerRegistrosEstadoTrue().subscribe((datos: ModeloPersona[])=>{
       this.listadoRegistros = datos;
     })
   }

@@ -87,6 +87,26 @@ export class PersonaController {
   ): Promise<Persona[]> {
     return this.personaRepository.find(filter);
   }
+  i=0;
+  listadoPerTrue: any[] = [];
+  @get('/personas/true')
+  @response(200, {
+    description: 'Array of Persona model instances',
+    content: {
+      'application/json': {
+        schema: {
+          type: 'array',
+          items: getModelSchemaRef(Persona, {includeRelations: true}),
+        },
+      },
+    },
+  })
+  async perTrue(
+    @param.filter(Persona) filter?: Filter<Persona>,
+  ): Promise<Persona[]> {
+    let bol = true
+    return this.personaRepository.find({where:{estado : bol}});
+  }
 
   @patch('/personas')
   @response(200, {
@@ -159,3 +179,4 @@ export class PersonaController {
     await this.personaRepository.deleteById(id);
   }
 }
+

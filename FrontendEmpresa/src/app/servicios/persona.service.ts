@@ -16,6 +16,10 @@ export class PersonaService {
     return this.http.get<ModeloPersona[]>(`${this.url}/personas`)
   }
 
+  obtenerRegistrosEstadoTrue():Observable<ModeloPersona[]>{
+    return this.http.get<ModeloPersona[]>(`${this.url}/personas/true`)
+  }
+
   obtenerRegistroPorId(id:string):Observable<ModeloPersona>{
     return this.http.get<ModeloPersona>(`${this.url}/personas/${id}`)
   }
