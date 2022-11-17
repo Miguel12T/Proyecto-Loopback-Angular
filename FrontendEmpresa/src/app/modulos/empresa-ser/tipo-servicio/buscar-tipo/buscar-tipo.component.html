@@ -6,12 +6,12 @@ id="crearTipoServicio">Agregar Tipo</a>
     <div class="card horizontal">
         <div class="card-stacked">
             <div class="card-content">
-                <table class="table responsive centered">
+                <table datatable  [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table responsive centered">
                     <thead>
                         <tr>
                             <th>nombre tipo servicio</th>
                             <th>Editar tipo Servicio</th>
-                            <th>Eliminar tipo Servicio</th>
+                            <!-- <th>Eliminar tipo Servicio</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -20,11 +20,11 @@ id="crearTipoServicio">Agregar Tipo</a>
                                 {{ p.tipo }}
                             </td>
                             <td>
-                                <a routerLink="/empresa-ser/editar-tipo/{{p.id}}" class="btn btn-primary"><i class="material-icons prefix">edit</i></a>
+                                <a routerLink="/empresa-ser/editar-tipo/{{p.id}}"  class="btn btn-floating btn waves-effect waves-light"><i class="material-icons prefix">edit</i></a>
                             </td>
-                            <td>
+                            <!-- <td>
                                 <a routerLink="/empresa-ser/eliminar-tipo/{{p.id}}" class="btn btn-primary" ><i class="material-icons prefix">close</i></a>
-                            </td>
+                            </td> -->
                         </tr>
                     </tbody>
                 </table>

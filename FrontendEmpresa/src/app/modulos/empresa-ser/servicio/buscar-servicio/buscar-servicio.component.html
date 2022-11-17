@@ -7,13 +7,13 @@
     <div class="card horizontal">
         <div class="card-stacked">
             <div class="card-content">
-                <table class="table responsive centered">
+                <table datatable  [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table responsive centered">
                     <thead>
                         <tr>
                             <th>nombre empresa</th>
                             <th>tipo servicio</th>
                             <th>Editar</th>
-                            <th>Eliminar</th>
+                           <!--  <th>Eliminar</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -27,15 +27,15 @@
                             <td>
                                 <a
                                     routerLink="/empresa-ser/editar-servicio/{{ser.id}}"
-                                    class="btn btn-primary"><i
+                                    class="btn btn-floating btn waves-effect waves-light"><i
                                         class="material-icons prefix">edit</i></a>
                             </td>
-                            <td>
+                            <!-- <td>
                                 <a
                                     routerLink="/empresa-ser/eliminar-servicio/{{ser.id}}"
                                     class="btn btn-primary"><i
                                         class="material-icons prefix">close</i></a>
-                            </td>
+                            </td> -->
 
                         </tr>
                     </tbody>

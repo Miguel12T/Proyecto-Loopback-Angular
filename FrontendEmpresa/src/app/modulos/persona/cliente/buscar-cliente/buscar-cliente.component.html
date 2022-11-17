@@ -6,7 +6,7 @@
     <div class="card horizontal">
       <div class="card-stacked">
         <div class="card-content">
-            <table class="table responsive centered">
+            <table datatable  [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table responsive centered">
                 <thead>
                     <tr>
                         <th>Nombre</th>
@@ -21,7 +21,7 @@
                         <td>{{ c.apellidos }}</td>
                         <td>{{ c.telefono }}</td>
                         <td>
-                            <a routerLink="/persona/editar-cliente/{{ c.id }}" class="btn btn-primary"><i class="material-icons prefix">edit</i></a>
+                            <a routerLink="/persona/editar-cliente/{{ c.id }}" class="btn btn-floating btn waves-effect waves-light"><i class="material-icons prefix">edit</i></a>
                         </td>
                     </tr>
                 </tbody>

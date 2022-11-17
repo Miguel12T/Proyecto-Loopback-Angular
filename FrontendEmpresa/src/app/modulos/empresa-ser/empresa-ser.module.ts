@@ -18,6 +18,7 @@ import { EditarTipoComponent } from './tipo-servicio/editar-tipo/editar-tipo.com
 import { EliminarTipoComponent } from './tipo-servicio/eliminar-tipo/eliminar-tipo.component';
 import { BuscarTipoComponent } from './tipo-servicio/buscar-tipo/buscar-tipo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DataTablesModule } from "angular-datatables";
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EmpresaSerRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    DataTablesModule,
   ]
 })
 export class EmpresaSerModule { }
