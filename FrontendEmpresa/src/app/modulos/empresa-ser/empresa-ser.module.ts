@@ -19,6 +19,10 @@ import { EliminarTipoComponent } from './tipo-servicio/eliminar-tipo/eliminar-ti
 import { BuscarTipoComponent } from './tipo-servicio/buscar-tipo/buscar-tipo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from "angular-datatables";
+import { EmpresaclienteComponent } from './empresacliente/empresacliente.component';
+import { CrearEmpresaclienteComponent } from './empresacliente/crear-empresacliente/crear-empresacliente.component';
+import { EditarEmpresaclienteComponent } from './empresacliente/editar-empresacliente/editar-empresacliente.component';
+import { BuscarEmpresaclienteComponent } from './empresacliente/buscar-empresacliente/buscar-empresacliente.component';
 
 
 @NgModule({
@@ -37,7 +41,11 @@ import { DataTablesModule } from "angular-datatables";
     CrearTipoComponent,
     EditarTipoComponent,
     EliminarTipoComponent,
-    BuscarTipoComponent
+    BuscarTipoComponent,
+    EmpresaclienteComponent,
+    CrearEmpresaclienteComponent,
+    EditarEmpresaclienteComponent,
+    BuscarEmpresaclienteComponent
   ],
   imports: [
     CommonModule,

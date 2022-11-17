@@ -13,7 +13,10 @@
 th { color:#6a7a8c; }
 
 td { color:#6a7a8c; }
-
+a{
+    background-color: #7460ee;
+    border-color: #7460ee; 
+}
 table{
     font-family:Arial, Helvetica, sans-serif;   
 }

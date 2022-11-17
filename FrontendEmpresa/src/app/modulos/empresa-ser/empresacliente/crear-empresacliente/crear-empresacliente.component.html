@@ -1,0 +1,39 @@
+<ol class="breadcrumb">
+    <li class="breadcrumb-item active">Sección Agregar Empresa-Cliente</li>
+</ol>
+<h3>Creación de Empresa-Cliente</h3>
+
+<div class="container">
+    <form [formGroup]="fgValidador" (ngSubmit)="GuardarEmpresaCli()" id="formList" method="post">
+
+        <div class="row col s10">
+            <div class="col s2">
+                <label class="col-form-label">Cliente</label>
+            </div>
+            <div class="col s5">
+                <select formControlName="clienteId" class="browser-default">
+                    <option value="" disabled selected>Seleccione un cliente</option>
+                    <option *ngFor="let emp of listadoCliente" [value]="emp.id">{{ emp.nombre }} {{  emp.apellidos  }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="row col s10">
+            <div class="col s2">
+                <label class="col-form-label">Empresa</label>
+                </div>
+                <div class="col s5">
+                    <select formControlName="empresaId" class="browser-default">
+                        <option value="" disabled selected>Seleccione una empresa</option>
+                        <option *ngFor="let empre of listadoEmpresa" [value]="empre.id">{{ empre.nombre }} </option>
+                    </select>
+                </div>
+        </div>
+
+        <div class="row col s12">
+            <div class="col s5">
+                <button [disabled]="!fgValidador.valid" type="submit" class="waves-effect waves-light btn-small">Guardar</button>
+            </div>
+        </div>
+   
+    </form>
+</div> 

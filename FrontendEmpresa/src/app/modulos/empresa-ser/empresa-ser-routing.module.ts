@@ -3,6 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { BuscarEmpresaComponent } from './empresa/buscar-empresa/buscar-empresa.component';
 import { CrearEmpresaComponent } from './empresa/crear-empresa/crear-empresa.component';
 import { EditarEmpresaComponent } from './empresa/editar-empresa/editar-empresa.component';
+import { BuscarEmpresaclienteComponent } from './empresacliente/buscar-empresacliente/buscar-empresacliente.component';
+import { CrearEmpresaclienteComponent } from './empresacliente/crear-empresacliente/crear-empresacliente.component';
+import { EditarEmpresaclienteComponent } from './empresacliente/editar-empresacliente/editar-empresacliente.component';
 import { BuscarServicioComponent } from './servicio/buscar-servicio/buscar-servicio.component';
 import { CrearServicioComponent } from './servicio/crear-servicio/crear-servicio.component';
 import { EditarServicioComponent } from './servicio/editar-servicio/editar-servicio.component';
@@ -61,7 +64,19 @@ const routes: Routes = [
   {
     path:'eliminar-servicio/:id',
     component: EliminarServicioComponent
-  }
+  },
+  {
+    path:'listar-empresacliente',
+    component: BuscarEmpresaclienteComponent
+  },
+  {
+    path:'crear-empresacliente',
+    component: CrearEmpresaclienteComponent
+  },
+  {
+    path:'editar-empresacliente/:id',
+    component: EditarEmpresaclienteComponent
+  },
 
 ];
 

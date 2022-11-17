@@ -1,0 +1,40 @@
+<h3 class="breadcrumb-item active" id="tituloTipoServicio">Empresa Cliente</h3>
+
+<a routerLink="/empresa-ser/crear-empresacliente" class="btn btn-primary"
+id="crearTipoServicio">Agregar Empresa-Cliente</a>
+<div class="col s12 m9">
+    <div class="card horizontal">
+        <div class="card-stacked">
+            <div class="card-content">
+                <table datatable  [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table responsive centered">
+                    <thead>
+                        <tr>
+                            <th>nombre empresa</th>
+                            <th>cliente</th>
+                            <th>editar</th>
+                            <!-- <th>Eliminar tipo Servicio</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let empc of listadoEmpresacliente">
+                            <td>
+                                {{ empc.empresaId }}
+                            </td>
+                            <td>
+                                
+                                {{ empc.nombre }} {{ empc.apellidos }}
+                            </td>
+                            <td>
+                                <a routerLink="/empresa-ser/editar-empresacliente/{{empc.id}}"  class="btn btn-floating btn waves-effect waves-light"><i class="material-icons prefix">edit</i></a>
+                            </td>
+                            <!-- <td>
+                                <a routerLink="/empresa-ser/eliminar-tipo/{{p.id}}" class="btn btn-primary" ><i class="material-icons prefix">close</i></a>
+                            </td> -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
